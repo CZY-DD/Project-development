@@ -248,7 +248,9 @@ void do_inq_adm(int sfd,USER user)
 	user.type=K;
 	write(sfd,&user,sizeof(USER));
 	read(sfd,&user,sizeof(USER));
-	printf("工号  名字  年龄  性别  工资  手机号\n");
+	if(user.num==1){
+		printf("工号  名字  年龄  性别  工资  手机号\n");
+	}
 	printf("%s\n",user.data);
 }
 void do_inq(int sfd,USER user)
@@ -256,7 +258,9 @@ void do_inq(int sfd,USER user)
 	user.type=I;
 	write(sfd,&user,sizeof(USER));
 	read(sfd,&user,sizeof(USER));
-	printf("工号  名字   手机号\n");
+	if(user.num==1){
+		printf("工号  名字   手机号\n");
+	}
 	printf("%s\n",user.data);
 	
 }

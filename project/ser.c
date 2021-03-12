@@ -404,6 +404,7 @@ int do_look_up(int fd,USER user)
 	
 	bzero(sql,sizeof(sql));
 	sprintf(sql,"select * from info where no='%s'",user.no);
+	printf("%s\n",sql);
 	sqlite3_get_table(db,sql,&resultp,&rowp,&columnp,&errmsg);
 	if(rowp==0)
 	{
@@ -421,7 +422,7 @@ int do_look_up(int fd,USER user)
 						resultp[i+4],resultp[i+5]);
 			}
 		}
-		printf("data:%s\n",user.data); 
+		user.num=1;
 		write(fd,&user,sizeof(user));
 	}
 	return 0;
@@ -544,6 +545,7 @@ void do_inq_user(int fd,USER user)
 			}
 		}
 		printf("user select succeed\n");
+		user.num=1;
 		write(fd,&user,sizeof(user));
 	}
 }
